@@ -3,6 +3,7 @@
 #include <atomic>
 #include <thread>
 #include <wx/display.h>
+#include <wx/valnum.h>
 
 class myFrame : public wxFrame
 {
@@ -34,6 +35,14 @@ private:
     // スレッド制御
     std::atomic<bool> running{ false };
     std::thread timerThread;
+
+    wxTextCtrl* text_end_min;
+    wxTextCtrl* text_end_sec;
+    wxTextCtrl* text_interval_min;
+    wxTextCtrl* text_interval_sec;
+
+    // 新規追加メソッド
+    bool GetTimeSettings(int& endSeconds, int& intervalMillis);
 
     // メソッド
     void StartTimer();
